@@ -17,7 +17,7 @@ search.addEventListener('click',() => {
       const description = document.querySelector('.weather-box .description');
       const humidity = document.querySelector('.weather-details .humidity span');
       const wind = document.querySelector('.weather-details .wind span');
-      const pressure = document.querySelector('.weather-details .pressure span');
+      const pressure = document.querySelector('info.pressure span');
 
       switch (json.weather[0].main) {
         case 'Clear':
@@ -52,8 +52,8 @@ search.addEventListener('click',() => {
       temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
       description.innerHTML = `${json.weather[0].description}`;
       humidity.innerHTML = `${json.main.humidity}%`;
-      wind.innerHTML = `${jason.main.wind.speed}Km/h`;
-      pressure.innerHTML = `${jason.main.pressure}atm`;
+      wind.innerHTML = `${json.main.wind.speed}Km/h`;
+      pressure.innerHTML = `${json.main.pressure}atm`;
 
 
     });
