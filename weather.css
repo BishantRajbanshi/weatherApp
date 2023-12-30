@@ -11,14 +11,18 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: rgb(25, 121, 25);
+  background: url(a-background-cloudy.jpg);
+  background-size: cover;
+  backdrop-filter: blur(10px)
 }
 .container {
   position: relative;
   border-radius: 30px;
   width: 400px;
   height: 555px;
-  background-color: purple;
+  background-color: rgba(255,255,255,.2);
+  ;
+  border-radius:16px;
   padding: 20px;
   color: #fff;
 }
@@ -104,6 +108,20 @@ body {
   display: flex;
   align-items: center;
   width: 40%;
+}
+
+.weather-details .humidity{
+  padding-left: 10px;
+  justify-content: flex-start;
+}
+
+.weather-details .wind{
+  justify-content: flex;
+}
+
+.weather-details .pressure{
+  padding-right: 10px;
+  justify-content: flex-end;
 }
 .weather-details img{
   size: 56px;
