@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const searchButton = document.querySelector('.search');
+  const searchButton = document.querySelector('.searched');
   const apiKey = 'c55f438e699a31156c728056b77cea2a';
   const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 

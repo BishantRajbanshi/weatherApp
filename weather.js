@@ -3,14 +3,10 @@ const search = document.querySelector('.search')
 const weatherBox = document.querySelector('.weather-box')
 const weatherDetails = document.querySelector('.weather-details')
 
-search.addEventListener('click', () => {
+.searched.addEventListener('click', () => {
 	const APIKey = 'c55f438e699a31156c728056b77cea2a'
-	const city = document.querySelector('.search-bar').value
+	let city = 'kathmandu'//document.querySelector('.search-bar').value
 
-	if (city == '') 
-  return
-
-	else 
   fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`
 	)
