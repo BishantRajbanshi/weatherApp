@@ -11,17 +11,25 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: url(images/a-background-cloudy.jpg);
+  background: url(images/a-background-sunny.jpg);
   background-size: cover;
   backdrop-filter: blur(10px)
+}
+#cityy{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: xx-large;
+  position: relative;
+  text-transform: capitalize;
 }
 .container {
   position: relative;
   border-radius: 30px;
   width: 400px;
-  height: 555px;
+  height: 590px;
   background-color: rgba(255,255,255,.2);
-  ;
   border-radius:16px;
   padding: 20px;
   color: #fff;
@@ -38,7 +46,7 @@ body {
   width: 100%;
   height: 100%;
   background: transparent;
-  border: 2px solid rgba(255,255,255,.2);
+  border: 2px solid rgba(255,255,255,0.2);
   outline: none;
   border-radius: 10px;
   font-size: 22px;
@@ -111,16 +119,20 @@ body {
 }
 
 .weather-details .humidity{
-  padding-left: 10px;
+  padding-left: 6px;
+  padding-right: 3px;
   justify-content: flex-start;
 }
 
 .weather-details .wind{
   justify-content: flex;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .weather-details .pressure{
-  padding-right: 10px;
+  padding-right: 8px;
+  padding-left: 4px;
   justify-content: flex-end;
 }
 .weather-details img{
@@ -135,4 +147,16 @@ body {
 .weather-details p{
   font-size: 14px;
   font-weight: 500;
+}
+.date-section {
+  text-align: right;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.date-section p {
+  font-size: 18px;
+  font-weight: 500;
+  color: aliceblue;
+  font-family:monospace;
 }

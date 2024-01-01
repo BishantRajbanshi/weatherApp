@@ -1,29 +1,26 @@
-// Wait for the DOM content to be fully loaded before executing the script
-document.addEventListener('DOMContentLoaded', function () {
-  // Select the search button element
+//Student Name: Bishant Rajbanshi
+document.addEventListener( 'DOMContentLoaded' , function () {
+  // Select the search button element from HTML
   const searchButton = document.querySelector('.searched');
-
-  // OpenWeatherMap API key and endpoint URL
-  const apiKey = 'c55f438e699a31156c728056b77cea2a';
-  const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
-
+  let cityName = '';
+  const apiKey = 'Your weather api';
   // Function to fetch weather data from OpenWeatherMap API
   function fetchWeatherData(cityName) {
-    // Construct the full API URL with query parameters
-    const fullApiUrl = `${apiUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
+
+    const comApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
     // Fetch weather data and handle JSON response
-    return fetch(fullApiUrl)
+    return fetch(comApiUrl)
       .then(response => response.json())
       .catch(error => {
-        // Log an error message if there is an issue fetching data
+        // Log an error message if there is an issue while fetching data
         console.error('Error fetching weather data:', error);
       });
   }
 
-  // Function to update the weather UI based on the fetched data
+  // Function to update the weather user interface based on the data fetched
   function updateWeather(weatherData) {
-    // Select UI elements for temperature, description, humidity, wind, pressure, and weather image
+    // Select elements for temperature, description, humidity, wind, pressure, and weather image
     const temperatureElement = document.querySelector('.temperature');
     const descriptionElement = document.querySelector('.description');
     const humidityElement = document.querySelector('.info-humidity span');
@@ -37,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     humidityElement.innerHTML = `${weatherData.main.humidity}%`;
     windElement.innerHTML = `${weatherData.wind.speed.toFixed(2)} Km/h`;
     pressureElement.innerHTML = `${(weatherData.main.pressure / 1013.25).toFixed(2)} atm`;
-
-    // Set the weather image based on weather conditions
+    // Set the weather image based on weather conditions using switch case
     const weatherCondition = weatherData.weather[0].main.toLowerCase();
 
     switch (weatherCondition) {
@@ -72,15 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to handle the search button click
   function handleSearch() {
     // Select the city input element
+
     const cityInput = document.querySelector('.search-bar');
     // Get the trimmed value of the city input
-    const cityName = cityInput.value.trim();
+     cityName = cityInput.value.trim();
 
-    // If the input is empty, set a default location (Aurangabad)
+    // If the input is empty, set a default location to Aurangabad.
     if (cityName === '') {
-      return fetchWeatherData('Aurangabad')
+      return fetchWeatherData()
         .then(data => {
           updateWeather(data);
+          updateCity();
         });
     }
 
@@ -88,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchWeatherData(cityName)
       .then(data => {
         updateWeather(data);
+        updateCity();
       });
   }
 
@@ -96,8 +95,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Set a default location (Aurangabad) and fetch/update weather data on page load
   const defaultLocation = 'Aurangabad';
+
   fetchWeatherData(defaultLocation)
     .then(data => {
       updateWeather(data);
+      updateCity();
     });
+  //function to update date,month and year
+    function updateDate()
+     {
+      const dateElement = document.getElementById("current-date");
+      const now = new Date();
+      const options = {month: 'long', day: 'numeric', year: 'numeric'};
+      const dateString = now.toLocaleString('en-US', options);
+      dateElement.textContent = dateString;
+  }
+
+  // Update date and time initially
+  updateDate();
+  //function to update city name default or searched name
+  function updateCity() {
+    const cityyElement = document.getElementById("cityy");
+    if (cityName === '')
+      cityyElement.innerHTML = defaultLocation;
+    else
+      cityyElement.innerHTML = cityName;
+  }
+
+  updateCity()
+
 });
