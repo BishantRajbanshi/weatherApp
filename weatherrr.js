@@ -43,28 +43,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     switch (weatherCondition) {
       case 'snow':
-        weatherImageElement.src = 'snow.png';
+        weatherImageElement.src = 'images/snow.png';
         break;
 
       case 'clear':
-        weatherImageElement.src = 'clear.png';
+        weatherImageElement.src = 'images/clear.png';
         break;
 
       case 'rain':
-        weatherImageElement.src = 'rain.png';
+        weatherImageElement.src = 'images/rain.png';
         break;
 
       case 'clouds':
-        weatherImageElement.src = 'cloud.png';
+        weatherImageElement.src = 'images/cloud.png';
         break;
 
       case 'mist':
       case 'haze':
-        weatherImageElement.src = 'mist.png';
+        weatherImageElement.src = 'images/mist.png';
         break;
 
       default:
-        weatherImageElement.src = 'default.png';
+        weatherImageElement.src = 'images/404.png';
         break;
     }
   }
