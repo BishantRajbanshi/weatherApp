@@ -38,29 +38,29 @@ document.addEventListener( 'DOMContentLoaded' , function () {
     const weatherCondition = weatherData.weather[0].main.toLowerCase();
 
     switch (weatherCondition) {
-      case 'snow':
-        weatherImageElement.src = 'images/snow.png';
-        break;
+      case 'snow' :
+          weatherImageElement.src= 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/snow.png';
+          break;
 
       case 'clear':
-        weatherImageElement.src = 'images/clear.png';
+        weatherImageElement.src = 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/clear.png';
         break;
 
       case 'rain':
-        weatherImageElement.src = 'images/rain.png';
+        weatherImageElement.src = 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/rain.png';
         break;
 
       case 'clouds':
-        weatherImageElement.src = 'images/cloud.png';
+        weatherImageElement.src = 'https://github.com/BishantRajbanshi/weatherApp/blob/main/images/cloud.png?raw=true';
         break;
 
       case 'mist':
       case 'haze':
-        weatherImageElement.src = 'images/mist.png';
+        weatherImageElement.src = 'https://github.com/BishantRajbanshi/weatherApp/blob/main/images/mist.png?raw=true';
         break;
 
       default:
-        weatherImageElement.src = 'images/404.png';
+        weatherImageElement.src = 'https://github.com/BishantRajbanshi/weatherApp/blob/main/images/404.png';
         break;
     }
   }
@@ -111,8 +111,10 @@ document.addEventListener( 'DOMContentLoaded' , function () {
       dateElement.textContent = dateString;
   }
 
-  // Update date and time initially
+  // Update date and time initially and every second while its open
   updateDate();
+  //set interval of 1 sec
+  setInterval(updateDate,1000)
   //function to update city name default or searched name
   function updateCity() {
     const cityyElement = document.getElementById("cityy");
@@ -121,7 +123,7 @@ document.addEventListener( 'DOMContentLoaded' , function () {
     else
       cityyElement.innerHTML = cityName;
   }
-
+//update cityu instantly
   updateCity()
 
 });

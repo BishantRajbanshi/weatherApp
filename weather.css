@@ -11,7 +11,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: url(images/a-background-sunny.jpg);
+  background: url(https://github.com/BishantRajbanshi/weatherApp/blob/main/images/a-background-cloudy.jpg?raw=true);
   background-size: cover;
   backdrop-filter: blur(10px)
 }
