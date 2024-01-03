@@ -79,12 +79,22 @@ body {
 }
 .weather-box{
   text-align: center;
-  margin: 40px 0;;
+  margin: 25px 0;;
 }
 .weather-box img{
   width: 60%;
 }
+.weather-box,
+.weather-details,
+.not-found{
+  visibility: hidden;
+}
 
+.weather-box.active,
+.weather-details.active,
+.not-found.active{
+  visibility: visible;
+}
 .weather-box .temperature{
   position: relative;
   font-size: 64px;
@@ -159,4 +169,20 @@ body {
   font-weight: 500;
   color: aliceblue;
   font-family:monospace;
+}
+.not-found{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 110px;
+}
+.not-found img{
+  width: 65%;
+}
+.not-found p{
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 12px;
 }

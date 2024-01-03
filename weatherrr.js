@@ -1,21 +1,43 @@
-//Student Name: Bishant Rajbanshi
-document.addEventListener( 'DOMContentLoaded' , function () {
+// Student Name: Bishant Rajbanshi
+document.addEventListener('DOMContentLoaded', function () {
   // Select the search button element from HTML
   const searchButton = document.querySelector('.searched');
+  const container = document.querySelector('.container');
+  const weatherBox = document.querySelector('.weather-box'); 
+  const weatherDetails = document.querySelector('.weather-details');
+  const error404 = document.querySelector('.not-found');
+//let city name early for default value
   let cityName = '';
-  const apiKey = 'Your weather api';
+  const apiKey = '';
+
   // Function to fetch weather data from OpenWeatherMap API
-  function fetchWeatherData(cityName) {
-
-    const comApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-
+  function fetchWeatherData(city) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     // Fetch weather data and handle JSON response
-    return fetch(comApiUrl)
+    return fetch(apiUrl)
       .then(response => response.json())
-      .catch(error => {
-        // Log an error message if there is an issue while fetching data
-        console.error('Error fetching weather data:', error);
-      });
+      .then(json => {
+//error case if city name is error it shows error
+        if (json.cod =='404'){
+          container.style.height = '400px';
+          weatherBox.classList.remove('active');
+          weatherDetails.classList.remove('active');
+          error404.classList.add('active');
+          return;
+        }
+
+          container.style.height = '555px';
+          weatherBox.classList.add('active');
+          weatherDetails.classList.add('active');
+          error404.classList.remove('active');
+
+          updateWeather(json);
+      })
+  }
+  // function to convert country code
+  function convertCountryCode(country) {
+    let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+    return regionNames.of(country);
   }
 
   // Function to update the weather user interface based on the data fetched
@@ -39,8 +61,8 @@ document.addEventListener( 'DOMContentLoaded' , function () {
 
     switch (weatherCondition) {
       case 'snow' :
-          weatherImageElement.src= 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/snow.png';
-          break;
+        weatherImageElement.src= 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/snow.png';
+        break;
 
       case 'clear':
         weatherImageElement.src = 'https://raw.githubusercontent.com/BishantRajbanshi/weatherApp/main/images/clear.png';
@@ -63,31 +85,23 @@ document.addEventListener( 'DOMContentLoaded' , function () {
         weatherImageElement.src = 'https://github.com/BishantRajbanshi/weatherApp/blob/main/images/404.png';
         break;
     }
+     updateCity(cityName, weatherData.sys.country);
   }
 
   // Function to handle the search button click
   function handleSearch() {
-    // Select the city input element
-
     const cityInput = document.querySelector('.search-bar');
-    // Get the trimmed value of the city input
-     cityName = cityInput.value.trim();
+    cityName = cityInput.value.trim();
 
     // If the input is empty, set a default location to Aurangabad.
-    if (cityName === '') {
-      return fetchWeatherData()
-        .then(data => {
-          updateWeather(data);
-          updateCity();
-        });
+    if (cityName === '')
+     {
+      cityName = 'Aurangabad';
     }
 
     // Fetch and update weather data based on the entered city name
     fetchWeatherData(cityName)
-      .then(data => {
-        updateWeather(data);
-        updateCity();
-      });
+
   }
 
   // Add event listener to the search button to trigger handleSearch function
@@ -97,33 +111,36 @@ document.addEventListener( 'DOMContentLoaded' , function () {
   const defaultLocation = 'Aurangabad';
 
   fetchWeatherData(defaultLocation)
-    .then(data => {
-      updateWeather(data);
-      updateCity();
-    });
-  //function to update date,month and year
-    function updateDate()
-     {
-      const dateElement = document.getElementById("current-date");
-      const now = new Date();
-      const options = {month: 'long', day: 'numeric', year: 'numeric'};
-      const dateString = now.toLocaleString('en-US', options);
-      dateElement.textContent = dateString;
+
+  // function to update date, month, and year
+  function updateDate() {
+    const dateElement = document.getElementById('current-date');
+    const now = new Date();
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const dateString = now.toLocaleString('en-US', options);
+    dateElement.textContent = dateString;
   }
 
-  // Update date and time initially and every second while its open
+  // Update date and time initially and every second while it's open
   updateDate();
-  //set interval of 1 sec
-  setInterval(updateDate,1000)
-  //function to update city name default or searched name
-  function updateCity() {
-    const cityyElement = document.getElementById("cityy");
-    if (cityName === '')
-      cityyElement.innerHTML = defaultLocation;
-    else
-      cityyElement.innerHTML = cityName;
+  // set interval of 1 sec
+  setInterval(updateDate, 1000);
+
+  // function to update city name default or searched name
+  function updateCity(cityName,country) {
+    const cityElement = document.getElementById('city-name');
+    cityy='';
+    
+    if (cityName === '') {
+      cityy = `${defaultLocation}, ${convertCountryCode(country)}`;
+    }
+    else {
+      cityy = `${cityName}, ${convertCountryCode(country)}`;
+    }
+      cityElement.innerHTML = cityy;
   }
-//update cityu instantly
-  updateCity()
+
+  // update city instantly
+  updateCity();
 
 });
