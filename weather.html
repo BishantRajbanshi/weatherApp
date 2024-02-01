@@ -7,65 +7,80 @@
 </head>
 <link rel="stylesheet" href="weather.css">
 <body>
-
     <div class="date-section">
-      <p id="current-date">January 0, 0000</p><br>
-      <div class="container">
-        <div class="search-box">
-          <img src="images/map-solid-24.png" class="map-bar">
-          <input type="text" class="search-bar" placeholder="Enter your location " >
-          <button class="searched"><img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/search-alt-2-regular-24.png?raw=true></button>
-        </div>
-        <div class="weather-box">
-          <p id="city-name" style="text-transform: capitalize;">City </p>
-          <div class="box">
-            <div class="info-weather">
-              <div class="weather">
-                <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/cloud.png?raw=true>
-                <p class="temperature">0<span>°C</span></p>
-                <p class="description">Broken Clouds</p>
+      <p id="current-date">January 0, 0000</p><br></div>
+
+      <div class="main-container">
+
+        <div class="container">
+          <div class="search-box">
+            <img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/map-solid-24.png?raw=true" class="map-bar">
+            <input type="text" class="search-bar" placeholder="Enter your location " name="city" >
+            <button class="searched"><img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/search-alt-2-regular-24.png?raw=true></button>
+          </div>
+          <div class="weather-box">
+            <p id="city-name" style="text-transform: capitalize;" >City </p>
+            <div class="box">
+              <div class="info-weather">
+                <div class="weather">
+                  <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/cloud.png?raw=true>
+                  <p class="temperature">0<span>°C</span></p>
+                  <p class="description">Broken Clouds</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="weather-details">
-          <div class="humidity">
-            <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/water-regular-24.png?raw=true>
-            <div class="text">
-              <div class="info-humidity">
-                <span>0%</span>
-                <p>Humidity</p>
+          
+          <div class="weather-details">
+            <div class="humidity">
+              <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/water-regular-24.png?raw=true>
+              <div class="text">
+                <div class="info-humidity">
+                  <span>0%</span>
+                  <p>Humidity</p>
+                </div>
+              </div>
+            </div>
+            <div class="wind">
+              <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/wind-regular-24.png?raw=true>
+              <div class="text">
+                <div class="info-wind">
+                  <span>0 Km/h</span>
+                  <p>Wind Speed</p>
+                </div>
+              </div>
+            </div>
+            <div class="pressure">
+              <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/pressure.png?raw=true>
+              <div class="text">
+                <div class="info-pressure">
+                  <span>0 atm</span>
+                  <p>Pressure</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="wind">
-            <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/wind-regular-24.png?raw=true>
-            <div class="text">
-              <div class="info-wind">
-                <span>0 Km/h</span>
-                <p>Wind Speed</p>
-              </div>
-            </div>
-          </div>
-          <div class="pressure">
-            <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/pressure.png?raw=true>
-            <div class="text">
-              <div class="info-pressure">
-                <span>0 atm</span>
-                <p>Pressure</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="not-found">
-          <div class="box">
+          <div class="not-found">
+            <div class="box">
             <img src=https://github.com/BishantRajbanshi/weatherApp/blob/main/images/404.png?raw=true>
             <p>Oops! Location not found!</p>
           </div>
         </div>
       </div>
-    <script src="weatherrr.js"></script>
+      <div class="past_data">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+      <footer>
+        <p class="footer-p">&copy; 2024 BishantRajbanshi. All rights reserved.</p>
+    </footer>
+     <script src="weather.js"></script>
     </body>
     </html>
     
