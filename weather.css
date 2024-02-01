@@ -10,10 +10,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  background: url(https://github.com/BishantRajbanshi/weatherApp/blob/main/images/a-background-cloudy.jpg?raw=true);
+  margin-right: 20px;
   background-size: cover;
-  backdrop-filter: blur(10px)
+  background-image: url('https://github.com/BishantRajbanshi/weatherApp/blob/main/images/2.gif?raw=true');
+  backdrop-filter: blur(2px);
 }
 #cityy{
   display: flex;
@@ -24,6 +24,10 @@ body {
   position: relative;
   text-transform: capitalize;
 }
+.main-container{
+  display: flex;
+  justify-content: space-between;
+}
 .container {
   position: relative;
   border-radius: 30px;
@@ -33,6 +37,7 @@ body {
   border-radius:16px;
   padding: 20px;
   color: #fff;
+  margin-right: 20px;
 }
 .search-box{
   position: relative;
@@ -102,16 +107,19 @@ body {
   font-weight: 700;
   margin: 20px 0 6px -30px;
 }
+
 .weather-box .temperature span{
   position: absolute;
   font-size: 24px;
   margin-left:4px ;
 }
+
 .weather-box .description{
   font-size: 22px;
   font-weight: 550;
   text-transform: capitalize;
 }
+
 .weather-details{
   position: absolute;
   bottom: 40px;
@@ -120,6 +128,7 @@ body {
   padding: 0 20px;
   display: flex;
 }
+
 .weather-details .humidity,
 .weather-details .wind,
 .weather-details .pressure{
@@ -159,7 +168,9 @@ body {
   font-weight: 500;
 }
 .date-section {
-  text-align: right;
+  text-align: center;
+  color: aliceblue;
+
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
@@ -185,4 +196,34 @@ body {
   font-size: 22px;
   font-weight: 500;
   margin-top: 12px;
+}
+.footer-p{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.past_data{
+  margin-top: 40px;
+  margin-left: 60px;
+  font-size: 10px;
+  width: 590px;
+  display: flex;
+  padding: 20px;
+  flex-wrap: wrap;
+  column-gap: 50px;
+  height: 500px;
+  border-radius: 30px;
+  & > * {
+    color: white;
+    width: 150px;
+    height: 170px;
+    padding: 15px 0px 0px 0px;
+    background-color: rgba(255,255,255,.2);
+    border-radius: 15px;
+    border: none;
+  }
 }
