@@ -1,4 +1,4 @@
-// Student Name: Bishant Rajbanshi
+// Bishant Rajbanshi
 document.addEventListener('DOMContentLoaded', function () {
   // Select the search button element from HTML
   const searchButton = document.querySelector('.searched');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const error404 = document.querySelector('.not-found');
 //let city name early for default value
   let cityName = '';
-  const apiKey = '';
+  const apiKey = 'Your OpenWeatherAPI';
 
   // Function to fetch weather data from OpenWeatherMap API
   function fetchWeatherData(city) {
@@ -32,13 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
           error404.classList.remove('active');
 
           updateWeather(json);
-      })
+      });
   }
   // function to convert country code
   function convertCountryCode(country) {
-    let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-    return regionNames.of(country);
+    try {
+      let regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+      return regionNames.of(country);
+    } catch (error) {
+      console.error('Error converting country code:', error);
+      return 'Unknown Region';
+    }
   }
+  
 
   // Function to update the weather user interface based on the data fetched
   function updateWeather(weatherData) {
@@ -123,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Update date and time initially and every second while it's open
   updateDate();
+
   // set interval of 1 sec
   setInterval(updateDate, 1000);
 
@@ -139,8 +146,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       cityElement.innerHTML = cityy;
   }
+  
 
   // update city instantly
   updateCity();
-
 });
+async function insert_past_data() {
+  try {
+    const response = await fetch('gettingdatafrommysql.php')
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    const data = await response.json()
+    console.log(data)
+
+    // Sort data based on the date in descending order
+    data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+
+    const divs = document.querySelectorAll('.past_data div')
+    //insert data in the each divs
+    if (data.length > 0) {
+      divs.forEach((div, i) => {
+        div.innerHTML = `
+        <p style = 'text-align:center'><b>Date</b>: ${data[i].date}</p>
+        <p><img src="http://openweathermap.org/img/wn/02d@2x.png", height="30px", width="30px">Temperature: ${data[i].temperature}°C </p>
+        <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/water-regular-24.png?raw=true", height="30px", width="30">Humidity: ${data[i].humidity}%</p>
+        <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/wind-regular-24.png?raw=true", height="30px", width="30">Wind_speed: ${data[i].windSpeed} Km/hr</p>
+        <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/pressure.png?raw=true",  height="30px", width="30">Pressure: ${data[i].pressure} atm</p>
+        `
+      })
+    } else {
+      divs.forEach(
+        (div) =>
+          (div.innerHTML =
+            '<h1 style = "padding-top: 30px; text-align: center">No data available</h1>')
+      )
+    }
+  } catch (error) {
+    console.error('Error fetching or parsing data:', error)
+  }
+}
+
+insert_past_data()
