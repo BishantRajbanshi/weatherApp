@@ -2,8 +2,9 @@
 // Include content of file
 include("config.php");
 // OpenWeatherMap API Key
-$apiKey = 'c55f438e699a31156c728056b77cea2a';
+$apiKey = 'Your OpenWeatherApi key';
 
+//You can set your default city anywhere
 $city = isset($_GET['city']) ?
 $_GET['city'] : "Aurangabad";
 
