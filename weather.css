@@ -89,17 +89,7 @@ body {
 .weather-box img{
   width: 60%;
 }
-.weather-box,
-.weather-details,
-.not-found{
-  visibility: hidden;
-}
 
-.weather-box.active,
-.weather-details.active,
-.not-found.active{
-  visibility: visible;
-}
 .weather-box .temperature{
   position: relative;
   font-size: 64px;
