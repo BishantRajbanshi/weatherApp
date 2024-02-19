@@ -1,11 +1,7 @@
 //Bishant Rajbanshi
 // Waits for the DOM content to be fully loaded before executing JavaScript codes
 
-document.addEventListener('DOMContentLoaded', function () {
-    //selects the search button
-  const searchButton = document.querySelector('.searched');
-  //let city name early for default value
-  let cityName = '';
+
 
 //function to fetch weather data from OpenWeatherMap API
 function fetchWeatherData(city) {
