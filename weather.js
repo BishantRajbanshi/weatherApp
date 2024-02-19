@@ -158,29 +158,4 @@ function fetchWeatherData(city) {
       data.sort((a, b) => new Date(b.date) - new Date(a.date));
         //selecting div elements
       const divs = document.querySelectorAll('.past_data div');
-      if (data.length > 0) {
-          //adding data to div
-        divs.forEach((div, i) => {
-          div.innerHTML = `
-            <p style='text-align:center'><b>Date</b>: ${data[i].date}</p>
-            <p><img src="http://openweathermap.org/img/wn/02d@2x.png" height="30px" width="30px">Temperature: ${data[i].temperature}°C </p>
-            <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/water-regular-24.png?raw=true" height="30px" width="30">Humidity: ${data[i].humidity}%</p>
-            <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/wind-regular-24.png?raw=true" height="30px" width="30">Wind_speed: ${data[i].windSpeed} Km/hr</p>
-            <p><img src="https://github.com/BishantRajbanshi/weatherApp/blob/main/images/pressure.png?raw=true"  height="30px" width="30">Pressure: ${data[i].pressure} atm</p>
-          `;
-        });
-      } else {
-        // When no data available display error message
-        divs.forEach(
-          (div) =>
-            (div.innerHTML =
-              '<h1 style="padding-top: 30px; text-align: center">No data available</h1>')
-        );
-      }
-    } catch (error) {
-      console.error('Error fetching or parsing data:', error);
-    }
-  }
-//calling function to insert past data
-  insert_past_data();
-});
+
