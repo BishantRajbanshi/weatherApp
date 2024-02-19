@@ -9,18 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //function to fetch weather data from OpenWeatherMap API
 function fetchWeatherData(city) {
-    //checks if the weather data for the city is already in local storage
-  const cacheData = localStorage.getItem(city.toLowerCase());
-  if (cacheData) {
-      //if there is data parse it and update weather display
-    const cachedWeatherData = JSON.parse(cacheData);
-    updateWeather(cachedWeatherData);
-    return Promise.resolve(cachedWeatherData);
-  }
-
-//if the data is not in local storage case
-  const apiKey = 'Your openweather api';
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     // Fetch weather data and handle JSON response
   return fetch(apiUrl)
     .then(response => {
